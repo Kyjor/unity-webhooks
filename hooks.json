@@ -1,0 +1,86 @@
+ [
+  {
+    "id": "build-fishy",
+    "execute-command": "/home/devbuild/Documents/build.sh",
+    "response-message": "Executing deploy script...",
+	"pass-arguments-to-command": [
+      {
+        "source": "string",
+        "name": "-NoProfile"
+      },
+      {
+        "source": "string",
+        "name": "-NonInteractive"
+      },
+      {
+        "source": "string",
+        "name": "-File"
+      },
+      {
+        "source": "payload",
+        "name": "head_commit.message"
+      }
+    ],
+     "trigger-rule":
+    {
+      "and":
+      [
+        
+        {
+          "match":
+          {
+            "type": "value",
+            "value": "refs/heads/master",
+            "parameter":
+            {
+              "source": "payload",
+              "name": "ref"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "build-kyru",
+    "execute-command": "/home/devbuild/Documents/build-kyru.sh",
+    "response-message": "Executing deploy script...",
+	"pass-arguments-to-command": [
+      {
+        "source": "string",
+        "name": "-NoProfile"
+      },
+      {
+        "source": "string",
+        "name": "-NonInteractive"
+      },
+      {
+        "source": "string",
+        "name": "-File"
+      },
+      {
+        "source": "payload",
+        "name": "head_commit.message"
+      }
+    ],
+     "trigger-rule":
+    {
+      "and":
+      [
+        
+        {
+          "match":
+          {
+            "type": "value",
+            "value": "refs/heads/master",
+            "parameter":
+            {
+              "source": "payload",
+              "name": "ref"
+            }
+          }
+        }
+      ]
+    }
+  },
+]
